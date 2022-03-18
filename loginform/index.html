@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css"></head>
+<body>
+    <form id ="form" method="post" >
+        <div id ="login"> LOGIN<hr></div>
+        <div id =user><p><label>User Name</label></p>
+<div><input type ="text" id="uName" placeholder ="Enter Username" ></div>
+        <div><label>Password</label></div>
+       <input type ="password" id="pass" placeholder ="Enter Password" >
+        <div><a id ="pwd" href =resetpass.html>Forgot Password?</a></div>
+
+      <div> <button type="button" id = "myButton" onclick="postfunc()">Login</button></div>
+    </form>
+</body>
+
+<script>
+function postfunc() {
+    // const formdetails = document.getElementById("mybutton");
+    // console.log("1");
+    const uName = document.getElementById("uName").value;
+    const pass = document.getElementById("pass").value;
+    // console.log(uName);
+    // console.log(pass);
+fetch("https://enouz0woct2v9.x.pipedream.net",{
+    method :'POST',
+    body: JSON.stringify({
+        name : uName,
+        pass : pass,        
+    }),
+}).then(res=> {
+       return res.json();
+// }).then (text=>{
+//     console.log(text);
+}).catch(function(error){
+        console.error("error")
+})
+}
+</script>
+</html>
